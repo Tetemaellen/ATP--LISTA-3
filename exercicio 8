@@ -1,0 +1,36 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Digite o número de elementos da série de Fibonacci que deseja imprimir: ");
+        int L = int.Parse(Console.ReadLine());
+
+        if (L <= 0)
+        {
+            Console.WriteLine("Número inválido. Por favor, insira um valor inteiro positivo maior que zero.");
+        }
+        else
+        {
+            ImprimirFibonacci(L);
+        }
+    }
+
+    static void ImprimirFibonacci(int L)
+    {
+        int a = 0, b = 1;
+
+        Console.WriteLine("Os primeiros " + L + " elementos da série de Fibonacci são:");
+        Console.Write(a + ", " + b);
+
+        for (int i = 2; i < L; i++)
+        {
+            int temp = a + b;
+            Console.Write(", " + temp);
+            a = b;
+            b = temp;
+        }
+        Console.WriteLine();
+    }
+}
