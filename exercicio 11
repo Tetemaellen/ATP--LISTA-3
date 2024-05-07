@@ -1,0 +1,50 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int[] votosCandidatos = new int[4]; // Array para armazenar os votos para cada candidato
+        int votosNulos = 0;
+        int votosBrancos = 0;
+
+        while (true)
+        {
+            Console.Write("Informe o código do candidato (ou 0 para encerrar): ");
+            int voto = int.Parse(Console.ReadLine());
+
+            if (voto == 0)
+            {
+                break;
+            }
+
+            switch (voto)
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    votosCandidatos[voto - 1]++; // Incrementa o voto para o candidato correspondente no array
+                    break;
+                case 5:
+                    votosNulos++;
+                    break;
+                case 6:
+                    votosBrancos++;
+                    break;
+                default:
+                    Console.WriteLine("Código de voto inválido.");
+                    break;
+            }
+        }
+
+        Console.WriteLine("Total de votos para cada candidato:");
+        for (int i = 0; i < votosCandidatos.Length; i++)
+        {
+            Console.WriteLine($"Candidato {i + 1}: {votosCandidatos[i]} votos");
+        }
+
+        Console.WriteLine($"Total de votos nulos: {votosNulos}");
+        Console.WriteLine($"Total de votos em branco: {votosBrancos}");
+    }
+}
