@@ -1,0 +1,51 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        double lucroMenor10 = 0, lucroEntre10e20 = 0, lucroMaior20 = 0;
+        double valorCompraTotal = 0, valorVendaTotal = 0;
+
+        while (true)
+        {
+            Console.Write("Informe o preço de compra da mercadoria (ou 0 para encerrar): ");
+            double precoCompra = double.Parse(Console.ReadLine());
+
+            if (precoCompra == 0)
+            {
+                break;
+            }
+
+            Console.Write("Informe o preço de venda da mercadoria: ");
+            double precoVenda = double.Parse(Console.ReadLine());
+
+            double lucro = (precoVenda - precoCompra) / precoCompra * 100;
+
+            valorCompraTotal += precoCompra;
+            valorVendaTotal += precoVenda;
+
+            if (lucro < 10)
+            {
+                lucroMenor10++;
+            }
+            else if (lucro >= 10 && lucro <= 20)
+            {
+                lucroEntre10e20++;
+            }
+            else
+            {
+                lucroMaior20++;
+            }
+        }
+
+        Console.WriteLine($"Quantidade de mercadorias com lucro < 10%: {lucroMenor10}");
+        Console.WriteLine($"Quantidade de mercadorias com lucro entre 10% e 20%: {lucroEntre10e20}");
+        Console.WriteLine($"Quantidade de mercadorias com lucro > 20%: {lucroMaior20}");
+
+        double lucroTotal = valorVendaTotal - valorCompraTotal;
+        Console.WriteLine($"Valor total de compra das mercadorias: {valorCompraTotal:C}");
+        Console.WriteLine($"Valor total de venda das mercadorias: {valorVendaTotal:C}");
+        Console.WriteLine($"Lucro total: {lucroTotal:C}");
+    }
+}
