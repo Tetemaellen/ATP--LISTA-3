@@ -1,0 +1,47 @@
+    using System;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Lista de valores
+            int[] valores;
+            int positivos = 0;
+            int negativos = 0;
+            int zeros = 0;
+
+            // Número total de valores fornecidos
+            Console.Write("Digite o número total de valores: ");
+            int totalValores = int.Parse(Console.ReadLine());
+            valores = new int[totalValores];
+
+            // Entrada dos valores
+            for (int i = 0; i < totalValores; i++)
+            {
+                Console.Write($"Digite o {i+1}º valor: ");
+                valores[i] = int.Parse(Console.ReadLine());
+                if (valores[i] > 0)
+                {
+                    positivos++;
+                }
+                else if (valores[i] < 0)
+                {
+                    negativos++;
+                }
+                else
+                {
+                    zeros++;
+                }
+            }
+
+            // Calcular percentuais
+            double percentualPositivos = (double)positivos / totalValores * 100;
+            double percentualNegativos = (double)negativos / totalValores * 100;
+            double percentualZeros = (double)zeros / totalValores * 100;
+
+            // Exibir resultados
+            Console.WriteLine($"Percentual de valores positivos: {percentualPositivos}%");
+            Console.WriteLine($"Percentual de valores negativos: {percentualNegativos}%");
+            Console.WriteLine($"Percentual de zeros: {percentualZeros}%");
+        }
+    }
